@@ -1,15 +1,12 @@
-use deep_sea::{engine::Engine, error::DeepSeaResult, random_solver::RandomSolver};
+use deep_sea::{
+    clayton::solver::{ClaytonSolver, ClaytonSolver2},
+    engine::Engine,
+    error::DeepSeaResult,
+};
 
 fn run() -> DeepSeaResult {
     // let result = Engine::play_game();
-    let result = Engine::evaluate_solvers::<(
-        RandomSolver,
-        RandomSolver,
-        RandomSolver,
-        RandomSolver,
-        RandomSolver,
-        RandomSolver,
-    )>(1_000_000)?;
+    let result = Engine::evaluate_solvers::<(ClaytonSolver, ClaytonSolver2)>(10_000)?;
 
     println!("Result: {result:?}");
 

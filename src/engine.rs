@@ -95,6 +95,7 @@ impl Engine {
     pub fn play_one_round(mut self) -> DeepSeaResult<Vec<u32>> {
         while !self.state.done() {
             self.take_turn()?;
+            // println!("{}", self.state);
         }
 
         Ok(self.score_game())

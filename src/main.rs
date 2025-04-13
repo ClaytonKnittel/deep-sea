@@ -6,7 +6,7 @@ use deep_sea::{
 
 fn run() -> DeepSeaResult {
     // let result = Engine::play_game();
-    let result = Engine::evaluate_solvers::<(ClaytonSolver, ClaytonSolver2)>(10_000)?;
+    let result = Engine::evaluate_solvers::<(ClaytonSolver, ClaytonSolver2)>(100_000)?;
 
     println!("Result: {result:?}");
 

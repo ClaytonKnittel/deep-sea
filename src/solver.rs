@@ -1,12 +1,13 @@
 use itertools::Itertools;
 use rand::seq::SliceRandom;
+use strum_macros::EnumCount;
 
 use crate::{
     deep_sea::{DeepSea, DiveDirection},
     treasure::Treasure,
 };
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, EnumCount, PartialEq, Eq, Hash)]
 pub enum TreasureDecision {
     Ignore,
     Take,

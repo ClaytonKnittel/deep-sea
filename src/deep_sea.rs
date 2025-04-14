@@ -3,6 +3,7 @@ use std::fmt::Display;
 use bit_set::BitSet;
 use itertools::Itertools;
 use lazy_static::lazy_static;
+use strum_macros::EnumCount;
 use termion::color;
 
 use crate::{
@@ -11,7 +12,7 @@ use crate::{
     treasure::Treasure,
 };
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, EnumCount, PartialEq, Eq, Hash)]
 pub enum Tile {
     Empty,
     Treasure(Treasure),
@@ -26,13 +27,13 @@ impl Display for Tile {
     }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, EnumCount, PartialEq, Eq, Hash)]
 pub enum DiveDirection {
     Down,
     Up,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[derive(Clone, Copy, Debug, EnumCount, PartialEq, Eq, Hash)]
 pub enum Position {
     /// Index into `DeepSea::path`.
     Diving(usize),
@@ -133,6 +134,10 @@ impl DeepSea {
 
     pub fn oxygen(&self) -> u32 {
         self.oxygen
+    }
+
+    pub fn occupied_tiles(&self) -> &BitSet {
+        &self.occupied_tiles
     }
 
     fn at_end(&self, position: Position) -> bool {
